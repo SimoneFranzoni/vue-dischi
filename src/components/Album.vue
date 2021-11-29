@@ -1,11 +1,11 @@
 <template>
-    <div class="col-3">
+    <div class="col-2">
         <div class="box">
             <img :src="item.poster" :alt="item.name" class="img-fluid">
-            <h2>{{item.title}}</h2>
-            <p>{{item.author}}</p>
-            <p>{{item.genre}}</p>
-            <p>{{item.year}}</p>
+            <h4>{{item.title}}</h4>
+            <div>{{item.author}}</div>
+            <div>{{item.genre}}</div>
+            <div>{{item.year}}</div>
         </div>
     </div>
 </template>
@@ -14,11 +14,17 @@
 export default {
     name: 'Album',
     props:{
-        album: Object
+        item: Object
   }
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+    .box{
+        color: white;
+        text-align: center;
+        img{
+           width: 100%; 
+        }
+    }
 </style>

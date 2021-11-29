@@ -5,12 +5,13 @@
     </header>
 
     <main>
+      <SearchBar @sendSearch="performSearch" />
       <div class="container">
         <div v-if="loaded" class="row">
           <Album
-            v-for="item in Album"
+            v-for="item in album"
             :key="item.id"
-            :album="item"
+            :item="item"
           />
         </div>
         <Loader v-else titleLoader="Is loading....."/>
@@ -23,34 +24,39 @@
 
 import axios from 'axios';
 
-import Album from './Album.vue'
+import Album from './Album';
+import Loader from './Loader';
+import SearchBar from './SearchBar';
 
 export default {
   name: 'AlbumList',
   components: { 
     Album, 
+    Loader,
+    SearchBar,
   },
   data(){
     return{
-      Album: [],
+      album: [],
       loaded: false,
       apiUrl: 'https://flynn.boolean.careers/exercises/api/array/music',
     }
   },
   methods:{
+    performSearch(text){
+      console.log(text)
+    },
     getApi(){
       axios.get(this.apiUrl)
       .then( r => {
-        this.Album = r.data;
+        this.album = r.data.response;
         this.loaded = true;
-        console.log(this.Album);
-        console.log(this.loaded);
+        console.log('r.data', r.data.response)
       })
       .catch( e => {
         console.log(e);
       })
-      console.log(this.loaded);
-      console.log(this.Album);
+      
     }
   },
   mounted(){
@@ -72,20 +78,17 @@ export default {
 
   main{
     background-color: #1e2d3b;
-    height: calc(100vh - 50px);
+    height: calc(100% - 50px);
     
     .container{
       display: flex;
       justify-content: space-between;
-      align-content: center;    
+      align-content: center; 
     }
   }
 
   .row{
     padding-top: 50px;
-    .box{
-      color: white;
-    }
   }
 
 </style>

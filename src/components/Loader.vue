@@ -1,6 +1,6 @@
 <template>
   <div>
-        <h1>{{titleLoader}}}</h1>
+        <h1>{{titleLoader}}</h1>
   </div>
 </template>
 
@@ -15,7 +15,6 @@ export default {
 
 <style lang="scss" scoped>
 
-/*
   .lds-hourglass {
     display: inline-block;
     position: relative;
@@ -30,8 +29,8 @@ export default {
     height: 0;
     margin: 8px;
     box-sizing: border-box;
-    border: 32px solid $primary-color;
-    border-color: $primary-color transparent $primary-color transparent;
+    border: 32px solid white;
+    border-color: white transparent white transparent;
     animation: lds-hourglass 1.2s infinite;
   } 
   @keyframes lds-hourglass {
@@ -47,5 +46,5 @@ export default {
       transform: rotate(1800deg);
     }
   }
-*/  
+ 
 </style>
