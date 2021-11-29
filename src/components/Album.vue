@@ -1,11 +1,11 @@
 <template>
     <div class="col-3">
         <div class="box">
-            <img :src="album.image" :alt="album.name" class="img-fluid">
-            <h2>{{album.title}}</h2>
-            <p>{{album.author}}</p>
-            <p>{{album.genre}}</p>
-            <p>{{album.yeae}}</p>
+            <img :src="item.poster" :alt="item.name" class="img-fluid">
+            <h2>{{item.title}}</h2>
+            <p>{{item.author}}</p>
+            <p>{{item.genre}}</p>
+            <p>{{item.year}}</p>
         </div>
     </div>
 </template>

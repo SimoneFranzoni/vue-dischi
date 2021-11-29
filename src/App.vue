@@ -8,7 +8,6 @@
 
 import AlbumList from './components/AlbumList.vue'
 
-
 export default {
   name: 'App',
   components: {

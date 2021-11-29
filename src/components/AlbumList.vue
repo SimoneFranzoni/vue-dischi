@@ -8,10 +8,9 @@
       <div class="container">
         <div v-if="loaded" class="row">
           <Album
-            v-for="album in albums"
-            :key="album.id"
-            :album="album"
-          />
+            v-for="item in Album"
+            :key="item.id"
+            :album="item"
           />
         </div>
         <Loader v-else titleLoader="Is loading....."/>
@@ -34,21 +33,25 @@ export default {
   data(){
     return{
       Album: [],
-      loaded:false,
-      apiUrl: 'https://flynn.boolean.careers/exercises/api/array/music'
+      loaded: false,
+      apiUrl: 'https://flynn.boolean.careers/exercises/api/array/music',
     }
   },
   methods:{
     getApi(){
       axios.get(this.apiUrl)
-        .then( r => {
-          this.album = r.data;
-          this.loaded = true;
-        })
-        .catch( e => {
-          console.log(e);
-        })
-      }
+      .then( r => {
+        this.Album = r.data;
+        this.loaded = true;
+        console.log(this.Album);
+        console.log(this.loaded);
+      })
+      .catch( e => {
+        console.log(e);
+      })
+      console.log(this.loaded);
+      console.log(this.Album);
+    }
   },
   mounted(){
     this.getApi();
@@ -83,7 +86,6 @@ export default {
     .box{
       color: white;
     }
-
   }
 
 </style>
