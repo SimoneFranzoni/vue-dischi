@@ -9,7 +9,7 @@
       <div class="container">
         <div v-if="loaded" class="row">
           <Album
-            v-for="item in album"
+            v-for="item in filteredAlbum"
             :key="item.id"
             :item="item"
           />
@@ -37,14 +37,33 @@ export default {
   },
   data(){
     return{
+      //da chiarire la questione singolare e plurale nel ciclo v-for
       album: [],
       loaded: false,
       apiUrl: 'https://flynn.boolean.careers/exercises/api/array/music',
+      textToSearch: '',
     }
   },
+  //si attiva quando viene modificato qualcosa al suo interno
+  computed:{
+    //non funziona
+    filteredAlbum(){
+      if(this.textToSearch === ''){
+        return this.album;
+        
+      } else {
+        return this.albums.filter( item =>{
+        return item.name.toUpperCase().includes(this.textToSearch.toUpperCase());
+        }
+      ) 
+    }
+  }
+}, 
   methods:{
+    //text è un nome random per chiamare il dato che mi arriva
     performSearch(text){
-      console.log(text)
+      this.textToSearch = text;
+      //console.log(text)
     },
     getApi(){
       axios.get(this.apiUrl)

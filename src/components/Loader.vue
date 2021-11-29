@@ -14,6 +14,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  div{
+    color: white;
+  }
 
   .lds-hourglass {
     display: inline-block;
