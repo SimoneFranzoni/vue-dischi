@@ -1,7 +1,7 @@
 <template>
     <div class="col-3">
         <div class="box">
-            <img src=".." alt="" class="img-fluid">
+            <img :src="album.image" :alt="album.name" class="img-fluid">
             <h2>{{album.title}}</h2>
             <p>{{album.author}}</p>
             <p>{{album.genre}}</p>

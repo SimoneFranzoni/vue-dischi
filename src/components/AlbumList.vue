@@ -6,7 +6,7 @@
 
     <main>
       <div class="container">
-        <div class="row">
+        <div v-if="loaded" class="row">
           <Album
             v-for="album in albums"
             :key="album.id"
@@ -14,6 +14,7 @@
           />
           />
         </div>
+        <Loader v-else titleLoader="Is loading....."/>
       </div>
     </main>
   </div>
