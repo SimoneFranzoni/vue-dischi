@@ -55,15 +55,21 @@ export default {
   //si attiva quando viene modificato qualcosa al suo interno
   computed:{
     filteredAlbum(){
-      const albumFiltered = [];
-      this.album.forEach( album => {
+      if(this.genreSelected === 'All'){
+        //console.log(this.genreSelected);
+        return this.album; 
+      } else {
+        //console.log(this.genreSelected);
+        const albumFiltered = [];
+        this.album.forEach( album => {
         if(album.genre === this.genreSelected){
           albumFiltered.push(album)
-        }
-      })
-      return albumFiltered;
+          }
+        })
+        return albumFiltered;
+      }
     }
-    //non funziona
+    // Searchbar function(non funziona)
     /*filteredAlbum(){
       if(this.textToSearch === ''){
         return this.album;
@@ -90,7 +96,7 @@ export default {
       .then( r => {
         this.album = r.data.response;
         this.loaded = true;
-        console.log('r.data', r.data.response)
+        //console.log('r.data', r.data.response)
       })
       .catch( e => {
         console.log(e);
