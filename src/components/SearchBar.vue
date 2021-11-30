@@ -1,6 +1,5 @@
 <template>
-    <section>
-        <div class="row">      
+    <section>     
             <div class="col-10">
                 <input 
                 v-model="textToSearch"
@@ -17,7 +16,6 @@
             <div class="col 1">
                 <button class="btn btn-warning">Reset</button>
             </div>
-        </div>
     </section>
   </template>
 
@@ -35,5 +33,6 @@ export default {
 <style scoped lang="scss">
     section{
         padding: 0 5%;
+        display: flex;
     }
 </style>

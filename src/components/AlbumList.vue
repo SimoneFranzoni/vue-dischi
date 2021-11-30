@@ -5,7 +5,10 @@
     </header>
 
     <main>
-      <SearchBar @sendSearch="performSearch" />
+      <div class="upperBar"> 
+        <SelectFilter @changeGenre="selectionGenre" /> 
+        <SearchBar @sendSearch="performSearch" />
+      </div> 
       <div class="container">
         <div v-if="loaded" class="row">
           <Album
@@ -27,6 +30,7 @@ import axios from 'axios';
 import Album from './Album';
 import Loader from './Loader';
 import SearchBar from './SearchBar';
+import SelectFilter from './SelectFilter';
 
 export default {
   name: 'AlbumList',
@@ -34,6 +38,10 @@ export default {
     Album, 
     Loader,
     SearchBar,
+    SelectFilter,
+  },
+  props: {
+    genreSelected: String,
   },
   data(){
     return{
@@ -46,8 +54,17 @@ export default {
   },
   //si attiva quando viene modificato qualcosa al suo interno
   computed:{
-    //non funziona
     filteredAlbum(){
+      const albumFiltered = [];
+      this.album.forEach( album => {
+        if(album.genre === this.genreSelected){
+          albumFiltered.push(album)
+        }
+      })
+      return albumFiltered;
+    }
+    //non funziona
+    /*filteredAlbum(){
       if(this.textToSearch === ''){
         return this.album;
         
@@ -56,10 +73,13 @@ export default {
         return item.name.toUpperCase().includes(this.textToSearch.toUpperCase());
         }
       ) 
-    }
-  }
-}, 
+    }*/
+  },
+
   methods:{
+    selectionGenre(genre){
+      this.genreSelected = genre;
+    },
     //text è un nome random per chiamare il dato che mi arriva
     performSearch(text){
       this.textToSearch = text;
@@ -78,6 +98,7 @@ export default {
       
     }
   },
+
   mounted(){
     this.getApi();
   }
@@ -99,6 +120,11 @@ export default {
     background-color: #1e2d3b;
     height: calc(100% - 50px);
     
+    .upperBar{
+      display: flex;
+      flex-direction: row;
+    }
+
     .container{
       display: flex;
       justify-content: space-between;
