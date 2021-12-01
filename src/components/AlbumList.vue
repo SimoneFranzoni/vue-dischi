@@ -48,14 +48,14 @@ export default {
       //da chiarire la questione singolare e plurale nel ciclo v-for
       album: [],
       loaded: false,
-      apiUrl: 'https://flynn.boolean.careers/exercises/api/array/music',
+      apiUrl: 'https://fapilynn.boolean.careers/exercises/api/array/music',
       textToSearch: '',
     }
   },
   //si attiva quando viene modificato qualcosa al suo interno
   computed:{
     filteredAlbum(){
-      if(this.genreSelected === 'All'){
+      if(this.genreSelected === ''){
         //console.log(this.genreSelected);
         return this.album; 
       } else {

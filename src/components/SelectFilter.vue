@@ -4,7 +4,7 @@
     v-model="genre"
     @change="$emit('changeGenre',genre)"
     class="form-select">
-        <option value="All" selected>Tutti i generi</option>
+        <option value="" selected>Tutti i generi</option>
         <option value="Jazz">Jazz</option>
         <option value="Rock">Rock</option>
         <option value="Metal">Metal</option>
@@ -22,7 +22,7 @@ export default {
         }
     }
 }
-console.log(genre);
+
 </script>
 
 <style>
