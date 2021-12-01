@@ -40,16 +40,14 @@ export default {
     SearchBar,
     SelectFilter,
   },
-  props: {
-    genreSelected: String,
-  },
   data(){
     return{
       //da chiarire la questione singolare e plurale nel ciclo v-for
       album: [],
       loaded: false,
-      apiUrl: 'https://fapilynn.boolean.careers/exercises/api/array/music',
+      apiUrl: 'https://flynn.boolean.careers/exercises/api/array/music',
       textToSearch: '',
+      genreSelected: '',
     }
   },
   //si attiva quando viene modificato qualcosa al suo interno
@@ -106,7 +104,7 @@ export default {
   },
 
   mounted(){
-    this.getApi();
+    this.getApi();   
   }
 }
 </script>
